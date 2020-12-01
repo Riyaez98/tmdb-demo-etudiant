@@ -30,9 +30,23 @@ class MovieDB{
     }
 
     afficheDernierFilms(data){
-        for (let index = 0; index < data.length; index++) {
-            console.log(data[index].title);
-            console.log(data[index].overview);
+
+        let section = document.querySelector(".liste-films");
+
+        for (let index = 0; index < this.totalFilm ; index++) {
+            //console.log(data[index].title);
+            //console.log(data[index].overview);
+            let article = document.querySelector(".template .film").cloneNode(true);//cloneNode ducplicate l'element chercher
+            article.querySelector("h2").innerHTML = data[index].title;
+            /*if(data[index].overview != ""){
+                article.querySelector(".description").innerHTML = data[index].overview;
+            }else{
+                article.querySelector(".description").innerHTML = ;
+            }*/
+
+            article.querySelector(".description").innerHTML = data[index].overview || "Aucune description";
+
+            section.appendChild(article);//Ajoute "article" a l'interieur de section dans le html.
         }
     }
 }
